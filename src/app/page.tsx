@@ -14,7 +14,7 @@ export default function HomePage() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[#d3abc7] flex flex-col items-center justify-center text-center px-4">
+        <div className="absolute inset-0 bg-[white] flex flex-col items-center justify-center text-center px-4">
           
           <p className="text-xl md:text-3xl text-black max-w-xl">
             Élégance. Simplicité. Intemporalité.
@@ -25,7 +25,7 @@ export default function HomePage() {
             </button>
           </Link>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-[30px] bg-[var(--accent-color)] opacity-60" />
+        <div className="absolute bottom-0 left-0 w-full h-[7px] bg-[black] opacity-60" />
 
       </section>
 
