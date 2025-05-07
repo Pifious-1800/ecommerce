@@ -1,4 +1,3 @@
-// src/context/CartContext.tsx
 'use client'
 import React, { createContext, useContext, useState } from 'react'
 
@@ -16,6 +15,7 @@ interface CartContextType {
   cartItems: CartItem[]
   addToCart: (product: any) => void
   adjustQuantity: (productId: number, change: number) => void
+  removeFromCart: (productId: number) => void  // Ajout de la fonction removeFromCart ici
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -47,17 +47,23 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }
 
   const adjustQuantity = (productId: number, change: number) => {
-    setCartItems(prevItems =>
-      prevItems.map(item =>
-        item.product.id === productId
-          ? { ...item, qty: Math.max(item.qty + change, 0) }
-          : item
-      )
+    setCartItems(prev =>
+      prev
+        .map(item =>
+          item.product.id === productId
+            ? { ...item, qty: item.qty + change }
+            : item
+        )
+        .filter(item => item.qty > 0)  // Supprime automatiquement ceux dont la quantité est <= 0
     )
   }
 
+  const removeFromCart = (productId: number) => {
+    setCartItems(prevItems => prevItems.filter(item => item.product.id !== productId))
+  }
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, adjustQuantity }}>
+    <CartContext.Provider value={{ cartItems, addToCart, adjustQuantity, removeFromCart }}>
       {children}
     </CartContext.Provider>
   )

@@ -15,17 +15,37 @@ export default function ProductPage() {
     setProd(found ?? null)
   }, [id])
 
-  if (prod === undefined) return <p className="p-4">Chargement...</p>
+  if (prod === undefined) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <p className="text-xl text-gray-600">Chargement du produit...</p>
+      </div>
+    )
+  }
+
   if (prod === null) {
     return (
-      <div className="p-4 text-center">
-        <p className="mb-4">Produit introuvable.</p>
-        <button onClick={() => router.push('/boutique')} className="px-4 py-2 bg-gray-800 text-white rounded">
-          Retour
+      <div className="p-6 text-center space-y-4">
+        <p className="text-xl text-gray-700">Produit introuvable.</p>
+        <button
+          onClick={() => router.push('/boutique')}
+          className="px-6 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg shadow-lg hover:from-pink-600 hover:to-purple-600 transition"
+        >
+          Retour à la boutique
         </button>
       </div>
     )
   }
 
-  return <ProductDetails product={prod} />
+  return (
+    <div className="max-w-4xl mx-auto p-6">
+      <button
+        onClick={() => router.back()}
+        className="mb-4 text-sm text-gray-600 hover:underline"
+      >
+        ← Retour
+      </button>
+      <ProductDetails product={prod} />
+    </div>
+  )
 }
