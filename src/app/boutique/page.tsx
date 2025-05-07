@@ -1,45 +1,35 @@
+// src/app/boutique/page.tsx
+'use client'
 import Image from 'next/image'
-
-//app/boutique/page.tsx
-
-// Todo: Replace with actual product data + images with good quality
-
-
-const products = [
-  { name: "Voile Été", price: "test - €40", image: "/product1.jpg" },
-  { name: "Voile Élégante", price: "test - €55", image: "/product2.jpg" },
-  { name: "Voile Sport", price: "test - €30", image: "/product3.jpg" },
-  { name: "Voile Été", price: "test - €40", image: "/product1.jpg" },
-  { name: "Voile Élégante", price: "test - €55", image: "/product2.jpg" },
-  { name: "Voile Sport", price: "test - €30", image: "/product3.jpg" },
-  { name: "Voile Été", price: "test - €40", image: "/product1.jpg" },
-  { name: "Voile Élégante", price: "test - €55", image: "/product2.jpg" },
-  { name: "Voile Sport", price: "test - €30", image: "/product3.jpg" },
-  { name: "Voile Sport", price: "test - €30", image: "/product3.jpg" },
-  { name: "Voile Sport", price: "test - €30", image: "/product3.jpg" },
-  { name: "Voile Sport", price: "test - €30", image: "/product3.jpg" },
-  // Add more products here
-]
+import { useRouter } from 'next/navigation'
+import { products } from '../data/products'
 
 export default function BoutiquePage() {
+  const router = useRouter()
+
   return (
-    <section className="py-10 px-4 sm:px-6 md:px-10 bg-[var(--background)]">
-      <div className="grid gap-6 grid-cols-2 sm:grid-cols-3">
-        {products.map((product, idx) => (
-          <div key={idx} className="overflow-hidden rounded-lg shadow-lg">
-            <div className="relative w-full aspect-square">
+    <section className="py-8 px-4 bg-gray-50 min-h-screen">
+      <h2 className="text-2xl font-bold mb-6 text-center">Nos Voiles</h2>
+      <div className="grid gap-6 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {products.map(p => (
+          <div
+            key={p.id}
+            className="bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <div
+              onClick={() => router.push(`/product/${p.id}`)}
+              className="relative w-full aspect-square cursor-pointer"
+            >
               <Image
-                src={product.image}
-                alt={product.name}
+                src={p.image}
+                alt={p.name}
                 fill
-                className="object-cover"
+                className="object-cover rounded-t-lg"
               />
             </div>
-            <div className="text-center mt-3">
-              <p className="text-base font-semibold text-[var(--foreground)]">
-                {product.name}
-              </p>
-              <p className="text-sm text-[var(--foreground)]">{product.price}</p>
+            <div className="p-4 text-center">
+              <p className="text-xl font-semibold">{p.name}</p>
+              <p className="text-gray-600 mb-2">€{p.price}</p>
             </div>
           </div>
         ))}

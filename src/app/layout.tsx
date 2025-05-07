@@ -2,6 +2,7 @@
 import './globals.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import { CartProvider } from './context/CartContext'
 import type { ReactNode } from 'react'
 import { Inter } from 'next/font/google'
 
@@ -16,9 +17,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr">
       <body className={`${inter.className} min-h-screen flex flex-col bg-white`}>
-        <Header />
+      <CartProvider> 
+      <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
+      </CartProvider>
       </body>
     </html>
   )

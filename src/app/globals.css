@@ -1,49 +1,42 @@
-/* globals.css */
+  /* globals.css */
 
-@import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @import "tailwindcss";
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
-:root {
-  --background: #ffffff;         /* Rose clair uniforme */
-  --foreground: #2e2e2e;         /* Texte foncé doux, pas noir pur */
-  --accent-color: #d4d1d3;       /* Variante plus foncée du rose clair pour boutons / bordures */
-  --button-hover: #ffffff;       /* Encore un ton légèrement différent pour hover */
-  --header-footer: #dcbad2;      /* Un rose pâle un peu différent pour header/footer */
-}
+  :root {
+    --background: #ffffff;         /* Rose clair uniforme */
+    --foreground: #2e2e2e;         /* Texte foncé doux, pas noir pur */
+    --accent-color: #d4d1d3;       /* Variante plus foncée du rose clair pour boutons / bordures */
+    --button-hover: #f1e6e3;       /* Ton clair pour le hover (rose pâle) */
+    --header-footer: #dcbad2;      /* Un rose pâle un peu différent pour header/footer */
+  }
 
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-}
+  button {
+    background-color: var(--accent-color);
+    color: rgb(0, 0, 0);
+    padding: 0.65rem 1.2rem;              /* Bon espacement */
+    font-size: 0.820rem;                  /* Texte légèrement plus petit (text-sm) */
+    font-weight: 500;                     /* Poids moyen */
+    border: none;                         /* Sans bordure */
+    border-radius: 0.245rem;              /* Légèrement arrondi */
+    cursor: pointer;                      /* Pointeur main */
+    transition: all 0.3s ease;            /* Animation fluide */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Ombre subtile */
+  }
 
-button {
-  background-color: var(--accent-color);
-  color: rgb(0, 0, 0);
-}
+  button:hover {
+    background-color: var(--button-hover); /* Changer la couleur de fond au hover */
+    color: white;                         /* Texte blanc au hover */
+    transform: translateY(-2px);          /* Léger effet de soulèvement */
+  }
 
-button {
-  background-color: #333333;            /* Gris foncé élégant */
-  color: #ffffff;                       /* Texte blanc */
-  padding: 0.65rem 1.2rem;              /* Bon espacement */
-  font-size: 0.820rem;                  /* Texte légèrement plus petit (text-sm) */
-  font-weight: 00;                     /* Poids moyen */
-  border: none;                         /* Sans bordure */
-  border-radius: 0.245rem;              /* Légèrement arrondi */
-  cursor: pointer;                      /* Pointeur main */
-  transition: all 0.3s ease;            /* Animation fluide */
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.15); /* Ombre subtile */
-}
-
-button:hover {
-               /* Hover noir profond */
-  color: white;                         /* Texte blanc au hover */
-  transform: translateY(-2px);          /* Léger effet de soulèvement */
-}
-
-header, footer {
-  background-color: rgba(255, 255, 255, 0.664)
-}
-
+  header, footer {
+    background-color: rgba(255, 255, 255, 0.664);
+  }
